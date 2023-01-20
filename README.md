@@ -24,6 +24,11 @@ My very clunky solution consists of 3 files:
 - `theme/index.hbs`, which adds the following lines:
 
   ```html
+
+  <button id="page-toc-toggle" class="icon-button" type="button" title="Toggle Page Table of Contents" onclick="pagetocToggle()">
+      <i class="fa fa-list-ul"></i>
+  </button>
+  ...
   <main>
       <!-- Page table of contents -->
       <div class="sidetoc"><nav class="pagetoc"></nav></div>

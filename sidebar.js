@@ -8,6 +8,18 @@ Array.prototype.forEach.call(document.getElementsByClassName("pagetoc")[0].child
     });
 });
 
+// Toggle pagetoc display
+function pagetocToggle() {
+  var x = document.getElementsByClassName("pagetoc")[0];
+  if (x.style.display === "none") {
+    x.style.display = "block";
+    localStorage.setItem('pagetoc-display','block')
+  } else {
+    x.style.display = "none";
+    localStorage.setItem('pagetoc-display','none')
+  }
+}
+
 var updateFunction = function() {
 
     var id;
@@ -32,6 +44,8 @@ var updateFunction = function() {
 // Populate sidebar on load
 window.addEventListener('load', function() {
     var pagetoc = document.getElementsByClassName("pagetoc")[0];
+    pagetoc.style.display = localStorage.getItem("pagetoc-display");
+
     var elements = document.getElementsByClassName("header");
     Array.prototype.forEach.call(elements, function(el) {
         var link = document.createElement("a");
