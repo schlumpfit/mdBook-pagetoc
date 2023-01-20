@@ -47,31 +47,36 @@ window.addEventListener('load', function() {
     pagetoc.style.display = localStorage.getItem("pagetoc-display");
 
     var elements = document.getElementsByClassName("header");
-    Array.prototype.forEach.call(elements, function(el) {
-        var link = document.createElement("a");
 
-        // Indent shows hierarchy
-        var indent = "";
-        switch (el.parentElement.tagName) {
-            case "H2":
-                indent = "20px";
-                break;
-            case "H3":
-                indent = "40px";
-                break;
-            case "H4":
-                indent = "60px";
-                break;
-            default:
-                break;
-        }
+    // Only build pagetoc if there is more than the page Heading
+    var elements = document.getElementsByClassName("header");
+    if (elements.length > 1) {
+        Array.prototype.forEach.call(elements, function(el) {
+            var link = document.createElement("a");
 
-        link.appendChild(document.createTextNode(el.text));
-        link.style.paddingLeft = indent;
-        link.href = el.href;
-        pagetoc.appendChild(link);
-    });
-    updateFunction.call();
+            // Indent shows hierarchy
+            var indent = "";
+            switch (el.parentElement.tagName) {
+                case "H2":
+                    indent = "20px";
+                    break;
+                case "H3":
+                    indent = "40px";
+                    break;
+                case "H4":
+                    indent = "60px";
+                    break;
+                default:
+                    break;
+            }
+
+            link.appendChild(document.createTextNode(el.text));
+            link.style.paddingLeft = indent;
+            link.href = el.href;
+            pagetoc.appendChild(link);
+        });
+        updateFunction.call();
+    }
 });
 
 

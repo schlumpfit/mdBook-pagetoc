@@ -17,9 +17,10 @@
     .pagetoc {
         position: fixed;
         width: 200px;
+        height: calc(100vh - var(--menu-bar-height) - 0.67em * 4);
+        overflow: auto;
     }
     .pagetoc a {
-        border-left: 1px solid var(--sidebar-bg);
         color: var(--fg) !important;
         display: block;
         padding-bottom: 5px;
@@ -36,5 +37,11 @@
     .pagetoc .active {
         background: var(--sidebar-bg);
         color: var(--sidebar-fg);
+    }
+}
+
+@media print {
+    .sidetoc {
+        display: none;
     }
 }
